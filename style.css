@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    letter-spacing: 1.2px;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+h1{
+   width: fit-content;
+   color: brown;
+
+}
+.container{
+position: relative;
+    border: 3px solid #d1d1d1;
+    width:46%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 45;
+    padding: 34;
+    border-radius: 6px;
+}
+.players{
+    display: flex;
+    gap: 2rem;
+    & div{
+        border: 1.1px solid brown;
+        border-radius: 6px;
+        padding: 6px 10px;
+    }
+}
+.gestures{
+    display: flex;
+    gap: 4rem;
+    position: relative;
+    margin-top: 35;
+    & div{
+        cursor: pointer;
+    }
+   & p{
+    position: absolute;
+    top: 105px;
+    left: 68px;
+   }
+}
+.play-ag{
+    background-color: brown;
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin-top: 34px;
+    cursor: pointer;
+    text-align: center;
+}
+.fa-solid{
+    font-size: 4rem;
+    color: brown;
+}
+.players-chose{
+    display: flex;
+    flex-direction: column;
+}
+ .chose-cont{
+    height: 3rem;
+display: flex;
+justify-content: space-around;
+align-items: center;
+ }
+.same-chose{
+    display: none;
+    & .fa-solid{
+        font-size: 2.5rem;
+    }
+}
+.user-chose{
+    padding-right: 36;
+}
+.result{
+    position: absolute;
+    top: 42%;
+    font-size: 1.5rem;
+    /* display: none; */
+}
+.same-ges{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.auto-play{
+    padding-top: 10;
+    display: flex;
+    justify-content: center;
+    gap:3px ;
+}
+#check{
+    width: 16px;
+    height: 17px;
+    cursor: pointer;
+}
+.fa-check{
+    font-size: 0.8rem;
+}
+@media (width<=480px){
+    .container{
+        width: 90%;
+    }
+    .result{
+        top: 47%;
+    }
+}
