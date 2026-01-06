@@ -3,6 +3,7 @@ const userChose = document.querySelector(".user-chose");
 const compChose = document.querySelector(".comp-chose");
 const userScore = document.querySelector(".player");
 const compScore = document.querySelector(".computer");
+const ties = document.querySelector(".ties");
 const playAgain = document.querySelector(".play-ag");
 const gesturesCont = document.querySelector(".gestures");
 const checkBox = document.querySelector("#check");
@@ -11,6 +12,7 @@ const ConnectionValidate = document.querySelector(".chose-cont");
 // fa-hand-fist >> Rock
 // fa-hand >> paper
 // fa-hand-scissors >> scissors
+let gameRunning=true
 
 let computerFunc = () => {
   let choices = ["fa-hand-fist", "fa-hand", "fa-hand-scissors"];
@@ -36,41 +38,45 @@ let resultMapping={
 
 }
 let userFunc = (e) => {
-    let target=e.target
+    let targetDiv=e.target
     let userChoice;
-    if (target.classList.contains("fa-hand-fist")){
-      userChoice="fa-hand-fist"
-    }
-    if (target.classList.contains("fa-hand")){
-      userChoice="fa-hand"
-    }
-    if (target.classList.contains("fa-hand-scissors")){
-      userChoice="fa-hand-scissors"
-    }
 
-    let computerChoice=computerFunc()
-    let resultText=resultMapping[userChoice][computerChoice];
-    result.innerHTML=resultText;
+  if (targetDiv.classList.contains("fa-hand-fist")){
+    userChoice="fa-hand-fist"
+  }
+ else if (targetDiv.classList.contains("fa-hand")){
+    userChoice="fa-hand"
+  }
+ else if (targetDiv.classList.contains("fa-hand-scissors")){
+    userChoice="fa-hand-scissors"
+  }
 
-    userChose.style.display = "block";
-    userChose.innerHTML = `<i class="fa-solid ${userChoice}"></i>`;
+  let computerChoice=computerFunc()
+  let resultText=resultMapping[userChoice][computerChoice];
+  result.innerHTML=resultText;
 
-    compChose.style.display = "block";
-    compChose.innerHTML = `<i class="fa-solid ${computerChoice}"></i>`;
+  userChose.style.display = "block";
+  userChose.innerHTML = `<i class="fa-solid ${userChoice}"></i>`;
 
-if (resultText.includes("User Wins!!!")) {
-  let userScore1 = Number(userScore.innerText);
-  userScore1 += 1;
-  userScore.innerText = userScore1;
-}
-else if (resultText.includes("Computer Wins!!!")) {
-  let compScore2 = Number(compScore.innerText);
-  compScore2 += 1;
-  compScore.innerText = compScore2;
-}
-else{
-  result.innerHTML="Tie!!!"
-}
+  compChose.style.display = "block";
+  compChose.innerHTML = `<i class="fa-solid ${computerChoice}"></i>`;
+  if (resultText.includes("User Wins!!!")) {
+    let userScore1 = Number(userScore.innerText);
+    userScore1 += 1;
+    userScore.innerText = userScore1;
+  }
+  else if (resultText.includes("Computer Wins!!!")) {
+    let compScore2 = Number(compScore.innerText);
+    compScore2 += 1;
+    compScore.innerText = compScore2;
+  }
+  else{
+    let ties2 = Number(ties.innerText);
+    ties2+=1
+    ties.innerText=ties2
+    result.innerHTML="Tie!!!"
+  }
+
 }
 if (!navigator.onLine) {
   ConnectionValidate.innerHTML="No Internet Connection!!"
@@ -115,16 +121,17 @@ if (!navigator.onLine) {
     result.innerHTML="Tie!!"
   }
   }*/
-  let gameRunning=true
   gesturesCont.addEventListener('click',(e)=> {
+console.log(gameRunning);
     if (checkBox.checked) {
       userFunc(e)
       gameRunning=false
     }
-    else if(gameRunning){
+     if(gameRunning){
       userFunc(e)
       gameRunning=false
     }
+    
   })
 // checkBox.addEventListener('change',(e)=>{
 //   if (!checkBox.checked) {
@@ -132,9 +139,10 @@ if (!navigator.onLine) {
 // }
 // })
 
-playAgain.addEventListener("click", () => {
-    userChose.innerHTML = "";
-    compChose.innerHTML = "";
-    result.innerHTML = "";
-    gameRunning=true
-})
+function playAgainFunc() {
+  userChose.innerHTML = "";
+  compChose.innerHTML = "";
+  result.innerHTML = "";
+  gameRunning=true
+}
+playAgain.addEventListener("click", playAgainFunc)

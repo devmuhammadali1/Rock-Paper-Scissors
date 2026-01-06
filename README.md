@@ -2,7 +2,7 @@
 A clean, quick game of Rock Paper Scissors. Play against the computer and score.
 
 Features:
-Score tracking - Wins, losses
+Score tracking - Wins, losses, Ties
 AutoPlay - Play quickly, No play again hassle
 
 Play:

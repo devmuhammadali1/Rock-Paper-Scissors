@@ -70,17 +70,15 @@ position: relative;
  .chose-cont{
     height: 3rem;
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
+padding: 0px 35px;
  }
 .same-chose{
     display: none;
     & .fa-solid{
         font-size: 2.5rem;
     }
-}
-.user-chose{
-    padding-right: 36;
 }
 .result{
     position: absolute;
